@@ -42,6 +42,10 @@ module ActiveMerchant
       def maximum_weight
         Mass.new(150, :pounds)
       end
+
+      def to_s
+        "#{name}#{ @test_mode ? '-test' : '' }"  
+      end
       
       protected
       
@@ -65,6 +69,7 @@ module ActiveMerchant
       def save_request(r)
         @last_request = r
       end
+
     end
   end
 end

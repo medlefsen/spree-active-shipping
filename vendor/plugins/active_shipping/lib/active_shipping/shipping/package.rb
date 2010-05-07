@@ -33,6 +33,10 @@ module ActiveMerchant #:nodoc:
         @currency = options[:currency] || (options[:value].currency if options[:value].respond_to?(:currency))
         @cylinder = (options[:cylinder] || options[:tube]) ? true : false
       end
+
+      def to_s
+        "#{@dimensions.map {|d| d.to_s }.join(' x ')} - #{@weight.to_s} - #{@options.map{|(k,v)| "#{k}:#{v}"}.join(',')}"
+      end
   
       def cylinder?
         @cylinder
